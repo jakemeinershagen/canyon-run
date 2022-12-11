@@ -1,0 +1,10 @@
+"Design":
+
+canyon runner
+side scrolling
+tile set
+hit space to do a jump roll thing to transition from canyon to canyon
+ship follows mouse
+
+
+I should really be better about designing first lol
