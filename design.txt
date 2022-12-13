@@ -6,5 +6,8 @@ tile set
 hit space to do a jump roll thing to transition from canyon to canyon
 ship follows mouse
 
+most of that bs I just said is wrong. this should be a top down game where the ship follows your mouse. we can have loop tracks and start to destination runs. when I say follows your mouse it should be like those drifty car games on mobile that you click in an area and that kind of drags your car that way with some delay.
+now to figure out the reward/competition system
+maybe it is a time trial system and the time of the other racers is determined afterward to place the player in a reasonable spot. start by determining this manually but eventually you could determine this based on how close they were to the intended tuning for that courses
 
 I should really be better about designing first lol
