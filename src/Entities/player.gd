@@ -1,13 +1,33 @@
 extends KinematicBody2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+export (float) var maxSpeed = 500
+export (float) var accel = 20
+export (float) var friction = 5
 
+onready var target = position
+var velocity = Vector2()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var mousePosition: Vector2 = get_viewport().get_mouse_position()
+func _physics_process(delta: float) -> void:
+	var mousePosition = get_global_mouse_position()
+	look_at(mousePosition)
 	
-	$".".global_position.y = mousePosition.y
+	# friction
+	var normalizedVel = velocity.normalized()
+	velocity.x -= normalizedVel.x * friction
+	velocity.y -= normalizedVel.y * friction
+	
+	# acceleration
+	var mouseClickStrength = Input.get_action_strength("click")
+	var mouseDirection = position.direction_to(mousePosition)
+	velocity.x += mouseDirection.x * mouseClickStrength * accel
+	velocity.y += mouseDirection.y * mouseClickStrength * accel
+	
+	# clamp velocity final
+	velocity = velocity.clamped(maxSpeed)
+	print(velocity)
+	
+	# should be taking care of delta
+	velocity = move_and_slide(velocity)
+
