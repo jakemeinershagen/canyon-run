@@ -1,3 +1,5 @@
 Credits for Canyon Run:
 
 Ship sprite - Xevin - https://opengameart.org/content/simple-spaceship - https://opengameart.org/users/xevin
+
+Tileset - Kenney - https://opengameart.org/content/racing-pack - https://opengameart.org/users/kenney
