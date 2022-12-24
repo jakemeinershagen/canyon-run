@@ -30,3 +30,12 @@ func _physics_process(delta: float) -> void:
 	# should be taking care of delta
 	velocity = move_and_slide(velocity)
 
+
+func wall_hit():
+	print("hit wall")
+
+
+# checks if player has hit the wall
+func _on_Hitbox_body_entered(body: Node) -> void:
+	if body.name == "TileMap":
+		wall_hit()
