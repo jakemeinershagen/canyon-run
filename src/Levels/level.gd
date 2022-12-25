@@ -11,7 +11,6 @@ func get_race_running():
 
 
 func _on_LapTracker_lap_triggered() -> void:
-	print(raceRunning, currLap)
 	if raceRunning == false:
 		raceRunning = true
 		currLap += 1
@@ -19,4 +18,3 @@ func _on_LapTracker_lap_triggered() -> void:
 		currLap += 1
 	elif raceRunning and currLap == numOfLaps:
 		raceRunning = false
-	print(raceRunning, currLap)
