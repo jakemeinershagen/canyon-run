@@ -14,4 +14,4 @@ I should really be better about designing first lol
 
 
 todo:
-create a finish line to start and stop timer
+move lap and race running info out of level node and into an autoload called racedata
