@@ -5,10 +5,7 @@ var isRunning: bool = false
 
 
 func _process(delta: float) -> void:
-	if get_tree().get_root().get_node("Level").get_race_running() == true:
-		isRunning = true
-	else:
-		isRunning = false
+	isRunning = RaceData.get_race_running()
 	if isRunning:
 		timeElapsed += delta
 

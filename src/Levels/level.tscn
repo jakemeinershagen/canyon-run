@@ -368,4 +368,3 @@ scale = Vector2( 1, 9.52 )
 shape = SubResource( 15 )
 
 [connection signal="body_entered" from="LapTracker" to="LapTracker" method="_on_LapTracker_body_entered"]
-[connection signal="lap_triggered" from="LapTracker" to="." method="_on_LapTracker_lap_triggered"]
