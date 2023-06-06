@@ -6,8 +6,8 @@ var raceRunning: bool = false
 var numLaps: int = 0
 var currLaps: int = startLaps
 
-func set_race(numLaps: int) -> void:
-	self.numLaps = numLaps
+func set_race(newLaps: int) -> void:
+	numLaps = newLaps
 	currLaps = startLaps
 	raceRunning = false
 

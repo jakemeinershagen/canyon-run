@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 
-export (float) var maxSpeed = 500
-export (float) var accel = 30
-export (float) var friction = 5
+export (float) var maxSpeed = 500.0
+export (float) var accel = 30.0
+export (float) var friction = 5.0
 
 onready var target = position
 var velocity = Vector2()
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y += mouseDirection.y * mouseClickStrength * accel
 	
 	# clamp velocity final
-	velocity = velocity.clamped(maxSpeed)
+	velocity = velocity.limit_length(maxSpeed)
 	
 	# should be taking care of delta
 	velocity = move_and_slide(velocity)
