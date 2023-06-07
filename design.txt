@@ -14,4 +14,5 @@ I should really be better about designing first lol
 
 
 todo:
-Add laps to the UI
+make the wall hit actually do something like detract points or slow down player. idk
+upgrade to godot 4 for nicer tilemap editing. should make track mapping a lot better

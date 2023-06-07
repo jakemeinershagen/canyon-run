@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/Entities/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Images/Floor - Dirt 1 64x64.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/Levels/stopwatch_label.gd" type="Script" id=6]
 [ext_resource path="res://src/Levels/level.gd" type="Script" id=7]
 [ext_resource path="res://src/Levels/lap_tracker.gd" type="Script" id=8]
+[ext_resource path="res://src/Levels/lap_label.gd" type="Script" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -357,6 +358,16 @@ script = ExtResource( 6 )
 
 [node name="Stopwatch" type="Node" parent="CanvasLayer/UI/StopwatchLabel"]
 script = ExtResource( 4 )
+
+[node name="LapLabel" type="Label" parent="CanvasLayer/UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -59.0
+margin_top = 13.0
+margin_right = -19.0
+margin_bottom = 27.0
+align = 2
+script = ExtResource( 9 )
 
 [node name="LapTracker" type="Area2D" parent="."]
 position = Vector2( 97, 63 )
