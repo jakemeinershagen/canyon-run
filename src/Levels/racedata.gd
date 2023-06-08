@@ -18,12 +18,14 @@ func get_num_laps() -> int:
 	return numLaps
 
 func add_lap() -> void:
-	if raceRunning == false:
+	print(raceRunning)
+	print(numLaps)
+	if !raceRunning and currLaps < numLaps:
 		raceRunning = true
 		currLaps += 1
 	elif raceRunning and currLaps < numLaps:
 		currLaps += 1
-	elif raceRunning and currLaps == numLaps:
+	if raceRunning and currLaps == numLaps:
 		raceRunning = false
 	print(currLaps)
 	print(raceRunning)

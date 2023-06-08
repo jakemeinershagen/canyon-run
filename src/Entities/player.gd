@@ -1,12 +1,12 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
-export (float) var maxSpeed = 500.0
-export (float) var accel = 30.0
-export (float) var friction = 5.0
+@export var maxSpeed: float = 500.0
+@export var accel: float = 30.0
+@export var friction: float = 5.0
 
-onready var target = position
-var velocity = Vector2()
+@onready var target = position
+var vel = Vector2()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -28,7 +28,9 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.limit_length(maxSpeed)
 	
 	# should be taking care of delta
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 
 func wall_hit():
