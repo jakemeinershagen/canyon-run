@@ -18,8 +18,6 @@ func get_num_laps() -> int:
 	return numLaps
 
 func add_lap() -> void:
-	print(raceRunning)
-	print(numLaps)
 	if !raceRunning and currLaps < numLaps:
 		raceRunning = true
 		currLaps += 1
@@ -27,8 +25,6 @@ func add_lap() -> void:
 		currLaps += 1
 	if raceRunning and currLaps == numLaps:
 		raceRunning = false
-	print(currLaps)
-	print(raceRunning)
 
 func set_curr_laps(val: int) -> void:
 	currLaps = val
