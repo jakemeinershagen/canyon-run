@@ -1,6 +1,6 @@
 extends Node
 
-onready var timeElapsed: float = 0.00
+@onready var timeElapsed: float = 0.00
 var isRunning: bool = false
 
 

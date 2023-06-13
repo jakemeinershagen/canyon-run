@@ -12,7 +12,12 @@ maybe it is a time trial system and the time of the other racers is determined a
 
 I should really be better about designing first lol
 
+had to switch rendering mode from forward+ to compatibility. That seems to have gotten rid of some stuttering I was seeing. I don't know why that would have caused and issue. may be worth looking into glaring performance mistakes in the project
+
 
 todo:
-make the wall hit actually do something like detract points or slow down player. idk
-upgrade to godot 4 for nicer tilemap editing. should make track mapping a lot better
+
+upgrade problems:
+	collisions don't work
+	thank god [this exists](https://docs.godotengine.org/en/stable/tutorials/2d/using_tilesets.html#doc-using-tilesets)
+		The merge doesn't seem to be working for me. When I try to merge into one I just get a transparent png

@@ -1,6 +1,6 @@
 extends Label
 
-onready var stopwatch: Node = get_node("Stopwatch")
+@onready var stopwatch: Node = get_node("Stopwatch")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
