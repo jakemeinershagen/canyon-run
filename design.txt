@@ -19,3 +19,5 @@ todo:
 
 upgrade problems:
 	collisions don't work
+	thank god [this exists](https://docs.godotengine.org/en/stable/tutorials/2d/using_tilesets.html#doc-using-tilesets)
+		The merge doesn't seem to be working for me. When I try to merge into one I just get a transparent png
