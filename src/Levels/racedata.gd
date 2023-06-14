@@ -11,12 +11,6 @@ func set_race(newLaps: int) -> void:
 	currLaps = startLaps
 	raceRunning = false
 
-func set_num_laps(val: int) -> void:
-	numLaps = val
-
-func get_num_laps() -> int:
-	return numLaps
-
 func add_lap() -> void:
 	if !raceRunning and currLaps < numLaps:
 		raceRunning = true
@@ -25,15 +19,3 @@ func add_lap() -> void:
 		currLaps += 1
 	if raceRunning and currLaps == numLaps:
 		raceRunning = false
-
-func set_curr_laps(val: int) -> void:
-	currLaps = val
-
-func get_curr_laps() -> int:
-	return currLaps
-
-func set_race_running(val: bool) -> void:
-	raceRunning = val
-
-func get_race_running() -> bool:
-	return raceRunning

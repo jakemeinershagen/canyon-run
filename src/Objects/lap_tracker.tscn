@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dia6q62caoisy"]
+
+[ext_resource type="Script" path="res://src/Levels/lap_tracker.gd" id="1_hac8u"]
+[ext_resource type="Script" path="res://src/Objects/lap_tracker_tool.gd" id="2_mv5ou"]
+
+[sub_resource type="RectangleShape2D" id="15"]
+
+[node name="LapTracker" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_hac8u")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+scale = Vector2(1.6, 9.52)
+shape = SubResource("15")
+
+[node name="LapTrackerTool" type="Node" parent="."]
+script = ExtResource("2_mv5ou")
+
+[node name="Arrow" type="Polygon2D" parent="."]
+position = Vector2(-16, 0)
+color = Color(0, 1, 0, 1)
+polygon = PackedVector2Array(-14, -4, 1, -4, 1, -8, 11, 0, 1, 8, 1, 4, -14, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_LapTracker_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ti0y78neg1q2"]
+[gd_scene load_steps=14 format=3 uid="uid://ti0y78neg1q2"]
 
 [ext_resource type="PackedScene" path="res://src/Entities/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdabvnd3jslw2" path="res://Assets/Images/Floor - Dirt 1 64x64.png" id="2"]
@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://byad7oqlrd7po" path="res://Assets/Images/finishline.png" id="5"]
 [ext_resource type="Script" path="res://src/Levels/stopwatch_label.gd" id="6"]
 [ext_resource type="Script" path="res://src/Levels/level.gd" id="7"]
-[ext_resource type="Script" path="res://src/Levels/lap_tracker.gd" id="8"]
 [ext_resource type="Script" path="res://src/Levels/lap_label.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://dia6q62caoisy" path="res://src/Objects/lap_tracker.tscn" id="9_gqq4n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqr2r"]
 resource_name = "Floor"
@@ -367,8 +367,6 @@ sources/1 = SubResource("TileSetAtlasSource_hqr2r")
 sources/2 = SubResource("TileSetAtlasSource_x00r8")
 sources/3 = SubResource("TileSetAtlasSource_4p8ly")
 
-[sub_resource type="RectangleShape2D" id="15"]
-
 [node name="Level" type="Node2D"]
 script = ExtResource("7")
 
@@ -376,7 +374,7 @@ script = ExtResource("7")
 scale = Vector2(1.02445, 1)
 tile_set = SubResource("TileSet_vdad2")
 format = 2
-layer_0/tile_data = PackedInt32Array(1, 458753, 5, 2, 458753, 5, 3, 458753, 5, 65539, 458753, 5, 65538, 458753, 5, 0, 458753, 5, 65536, 458753, 5, 65537, 458753, 5, 4, 458753, 5, 5, 458753, 5, 65540, 458753, 5, 65541, 458753, 5, 131071, 458753, 5, 65535, 458753, 5, -1, 327682, 3, -65536, 327682, 3, -65535, 327682, 3, -65534, 327682, 3, -65533, 327682, 3, -65532, 327682, 3, -65531, 327682, 3, 196607, 327682, 4, 131072, 327682, 4, 131073, 327682, 4, 131074, 327682, 4, 131075, 327682, 4, 131076, 327682, 4, 131077, 327682, 4)
+layer_0/tile_data = PackedInt32Array(1, 458753, 5, 2, 458753, 5, 3, 458753, 5, 65539, 458753, 5, 65538, 458753, 5, 0, 458753, 5, 65536, 458753, 5, 65537, 458753, 5, 4, 458753, 5, 5, 458753, 5, 65540, 458753, 5, 65541, 458753, 5, 131071, 458753, 5, 65535, 458753, 5)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(13, 55)
@@ -413,13 +411,5 @@ offset_right = -19.0
 offset_bottom = 27.0
 script = ExtResource("9")
 
-[node name="LapTracker" type="Area2D" parent="."]
-position = Vector2(97, 63)
-collision_layer = 0
-script = ExtResource("8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LapTracker"]
-scale = Vector2(1, 9.52)
-shape = SubResource("15")
-
-[connection signal="body_entered" from="LapTracker" to="LapTracker" method="_on_LapTracker_body_entered"]
+[node name="LapTracker" parent="." instance=ExtResource("9_gqq4n")]
+position = Vector2(170, 63)
