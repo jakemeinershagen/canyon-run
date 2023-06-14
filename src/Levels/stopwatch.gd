@@ -5,7 +5,7 @@ var isRunning: bool = false
 
 
 func _process(delta: float) -> void:
-	isRunning = RaceData.get_race_running()
+	isRunning = RaceData.raceRunning
 	if isRunning:
 		timeElapsed += delta
 
