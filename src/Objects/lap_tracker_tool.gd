@@ -9,8 +9,8 @@ func _ready():
 	if Engine.is_editor_hint():
 		prevDir = tracker.startDirection
 		arrow.visible = true
-#	else:
-#		arrow.visible = false
+	else:
+		arrow.visible = false
 
 func _process(_delta):
 	if Engine.is_editor_hint():
