@@ -1,8 +1,13 @@
 extends Node
 
+signal game_paused
+signal game_unpaused
+
 var startLaps: int = -1
 
 var raceRunning: bool = false
+var gamePaused: bool = false
+
 var numLaps: int = 0
 var currLaps: int = startLaps
 
@@ -19,3 +24,14 @@ func add_lap() -> void:
 		currLaps += 1
 	if raceRunning and currLaps == numLaps:
 		raceRunning = false
+
+func toggle_pause() -> void:
+	gamePaused = !gamePaused
+	if gamePaused:
+		emit_signal("game_paused")
+	else:
+		emit_signal("game_unpaused")
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		toggle_pause()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqw7jd41lm4ec"]
 
 [ext_resource type="Script" path="res://src/UI/start_button.gd" id="1_hbpx0"]
-[ext_resource type="Script" path="res://src/UI/quit_button.gd" id="2_di7c6"]
+[ext_resource type="PackedScene" uid="uid://bg36u5m2ohqlk" path="res://src/UI/QuitButton.tscn" id="2_knjwm"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -43,7 +43,7 @@ grow_vertical = 2
 text = "Track Select"
 metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" parent="." instance=ExtResource("2_knjwm")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,8 +56,5 @@ offset_right = 48.0
 offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Quit"
-script = ExtResource("2_di7c6")
 
 [connection signal="button_up" from="StartButton" to="StartButton" method="_on_button_up"]
-[connection signal="button_up" from="QuitButton" to="QuitButton" method="_on_button_up"]
