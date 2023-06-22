@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dia6q62caoisy"]
 
-[ext_resource type="Script" path="res://src/Levels/lap_tracker.gd" id="1_hac8u"]
+[ext_resource type="Script" path="res://src/Objects/lap_tracker.gd" id="1_hac8u"]
 [ext_resource type="Script" path="res://src/Objects/lap_tracker_tool.gd" id="2_mv5ou"]
 
 [sub_resource type="RectangleShape2D" id="15"]

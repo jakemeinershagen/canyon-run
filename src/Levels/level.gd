@@ -5,4 +5,3 @@ extends Node2D
 
 func _ready() -> void:
 	RaceData.set_race(numOfLaps)
-
