@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ti0y78neg1q2"]
+[gd_scene load_steps=26 format=3 uid="uid://ti0y78neg1q2"]
 
 [ext_resource type="PackedScene" path="res://src/Entities/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdabvnd3jslw2" path="res://Assets/Images/Floor - Dirt 1 64x64.png" id="2"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dia6q62caoisy" path="res://src/Objects/lap_tracker.tscn" id="9_gqq4n"]
 [ext_resource type="PackedScene" uid="uid://bg36u5m2ohqlk" path="res://src/UI/QuitButton.tscn" id="9_nqkse"]
 [ext_resource type="Script" path="res://src/UI/resume_button.gd" id="10_eajmv"]
+[ext_resource type="Script" path="res://src/Levels/race_over_menu.gd" id="12_8mng8"]
+[ext_resource type="Script" path="res://src/Levels/restart_button.gd" id="13_pd5wd"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_y4o6a"]
 tile_data = PackedInt32Array(0, 327682, 3, 65536, 458753, 5, 131072, 458753, 5, 196608, 262146, 3)
@@ -494,7 +496,83 @@ offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="RaceOverMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_8mng8")
+
+[node name="RaceOverTitleLabel" type="Label" parent="CanvasLayer/RaceOverMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_top = 122.0
+offset_right = 28.5
+offset_bottom = 148.0
+grow_horizontal = 2
+text = "Race Over!"
+
+[node name="YourTimeLabel" type="Label" parent="CanvasLayer/RaceOverMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_top = 162.0
+offset_right = 41.5
+offset_bottom = 188.0
+grow_horizontal = 2
+text = "Score: "
+
+[node name="BestTimeLabel" type="Label" parent="CanvasLayer/RaceOverMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.5
+offset_top = 196.0
+offset_right = 41.5
+offset_bottom = 222.0
+grow_horizontal = 2
+text = "High Score:"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/RaceOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -15.5
+offset_right = 32.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+script = ExtResource("13_pd5wd")
+
+[node name="QuitButton" parent="CanvasLayer/RaceOverMenu" instance=ExtResource("9_nqkse")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 30.0
+offset_right = 48.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="LapTracker" parent="." instance=ExtResource("9_gqq4n")]
 position = Vector2(147, 64)
 
 [connection signal="button_up" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/RaceOverMenu/RestartButton" to="CanvasLayer/RaceOverMenu/RestartButton" method="_on_button_up"]

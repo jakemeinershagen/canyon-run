@@ -1,7 +1,13 @@
 extends Node
 
+signal race_data_times_updated
+
 @onready var timeElapsed: float = 0.00
 var isRunning: bool = false
+
+
+func _ready():
+	connect("race_over", _on_race_over)
 
 
 func _process(delta: float) -> void:
@@ -13,9 +19,21 @@ func _process(delta: float) -> void:
 	# the race, pauseing the game actually started the stopwatch
 	if isRunning && !RaceData.gamePaused:
 		timeElapsed += delta
+	elif !isRunning && RaceData.raceOver:
+		if timeElapsed < RaceData.fastestTime:
+			RaceData.fastestTime = timeElapsed
+		emit_signal("fastest_time_updated")
+
 
 func getTimeString():
 	var minutes = floor(timeElapsed / 60)
 	var seconds = int(timeElapsed) % 60
 	var milliseconds = int(timeElapsed * 1000) % 1000
 	return "%02d:%02d:%03d" % [minutes, seconds, milliseconds]
+
+
+func _on_race_over():
+	RaceData.currentTime = timeElapsed
+	if timeElapsed < RaceData.fastestTime:
+		RaceData.fastestTime = timeElapsed
+	emit_signal("race_data_times_updated")
