@@ -1,11 +1,11 @@
 extends Node
 
-signal game_paused
-signal game_unpaused
-
 var startLaps: int = -1
+var fastestTime: float = 999.999
+var currentTime: float = 0.0
 
 var raceRunning: bool = false
+var raceOver: bool = false
 var gamePaused: bool = false
 
 var numLaps: int = 0
@@ -15,6 +15,7 @@ func set_race(newLaps: int) -> void:
 	numLaps = newLaps
 	currLaps = startLaps
 	raceRunning = false
+	raceOver = false
 
 func add_lap() -> void:
 	if !raceRunning and currLaps < numLaps:
@@ -22,15 +23,12 @@ func add_lap() -> void:
 		currLaps += 1
 	elif raceRunning and currLaps < numLaps:
 		currLaps += 1
-	if raceRunning and currLaps == numLaps:
-		raceRunning = false
+		if currLaps == numLaps:
+			raceRunning = false
+			raceOver = true
 
 func toggle_pause() -> void:
 	gamePaused = !gamePaused
-	if gamePaused:
-		emit_signal("game_paused")
-	else:
-		emit_signal("game_unpaused")
 
 func _input(event):
 	if event.is_action_pressed("pause"):
