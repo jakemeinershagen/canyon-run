@@ -15,6 +15,7 @@ func set_race(newLaps: int) -> void:
 	numLaps = newLaps
 	currLaps = startLaps
 	raceRunning = false
+	raceOver = false
 
 func add_lap() -> void:
 	if !raceRunning and currLaps < numLaps:

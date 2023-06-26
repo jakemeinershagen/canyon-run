@@ -1,7 +1,4 @@
 extends Button
 
-
-
-
 func _on_button_up():
-	get_tree().reload_current_scene()
+	LevelLoader.restart_level()
