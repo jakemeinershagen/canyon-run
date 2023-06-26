@@ -5,11 +5,6 @@ signal race_data_times_updated
 @onready var timeElapsed: float = 0.00
 var isRunning: bool = false
 
-
-func _ready():
-	connect("race_over", _on_race_over)
-
-
 func _process(delta: float) -> void:
 	# if you need to stop timer, change RaceData State
 	isRunning = RaceData.raceRunning
@@ -20,9 +15,7 @@ func _process(delta: float) -> void:
 	if isRunning && !RaceData.gamePaused:
 		timeElapsed += delta
 	elif !isRunning && RaceData.raceOver:
-		if timeElapsed < RaceData.fastestTime:
-			RaceData.fastestTime = timeElapsed
-		emit_signal("fastest_time_updated")
+		_on_race_over()
 
 
 func getTimeString():

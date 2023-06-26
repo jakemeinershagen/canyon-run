@@ -3,17 +3,14 @@ extends Control
 @onready var yourTime: Node = get_node("YourTimeLabel")
 @onready var bestTime: Node = get_node("BestTimeLabel")
 
-func _ready():
-	connect("race_data_times_updated", _on_race_data_times_updated)
 
-
-func _process(delta):
+func _process(_delta):
 	if !RaceData.raceOver:
 		visible = false
 	else:
 		visible = true
 
 
-func _on_race_data_times_updated() -> void:
+func _on_stopwatch_race_data_times_updated():
 	yourTime.text = "Your Time: %f" % RaceData.currentTime
 	bestTime.text = "Best Time: %f" % RaceData.fastestTime

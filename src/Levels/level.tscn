@@ -3,17 +3,17 @@
 [ext_resource type="PackedScene" path="res://src/Entities/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdabvnd3jslw2" path="res://Assets/Images/Floor - Dirt 1 64x64.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://t8v06tnb8ef0" path="res://Assets/Images/Wall - Brick 2 64x64.png" id="3"]
-[ext_resource type="Script" path="res://src/Levels/stopwatch.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://byad7oqlrd7po" path="res://Assets/Images/finishline.png" id="5"]
-[ext_resource type="Script" path="res://src/Levels/stopwatch_label.gd" id="6"]
+[ext_resource type="Script" path="res://src/UI/stopwatch_label.gd" id="6_yxojd"]
 [ext_resource type="Script" path="res://src/Levels/level.gd" id="7"]
+[ext_resource type="Script" path="res://src/UI/stopwatch.gd" id="7_a7vhx"]
 [ext_resource type="Script" path="res://src/Objects/lap_label.gd" id="8_tixbp"]
 [ext_resource type="Script" path="res://src/UI/pause_menu.gd" id="9_4vi2q"]
 [ext_resource type="PackedScene" uid="uid://dia6q62caoisy" path="res://src/Objects/lap_tracker.tscn" id="9_gqq4n"]
 [ext_resource type="PackedScene" uid="uid://bg36u5m2ohqlk" path="res://src/UI/QuitButton.tscn" id="9_nqkse"]
 [ext_resource type="Script" path="res://src/UI/resume_button.gd" id="10_eajmv"]
-[ext_resource type="Script" path="res://src/Levels/race_over_menu.gd" id="12_8mng8"]
-[ext_resource type="Script" path="res://src/Levels/restart_button.gd" id="13_pd5wd"]
+[ext_resource type="Script" path="res://src/UI/race_over_menu.gd" id="12_iwybs"]
+[ext_resource type="Script" path="res://src/UI/restart_button.gd" id="13_5aufr"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_y4o6a"]
 tile_data = PackedInt32Array(0, 327682, 3, 65536, 458753, 5, 131072, 458753, 5, 196608, 262146, 3)
@@ -429,10 +429,10 @@ offset_left = 18.0
 offset_top = 13.0
 offset_right = 218.0
 offset_bottom = 27.0
-script = ExtResource("6")
+script = ExtResource("6_yxojd")
 
 [node name="Stopwatch" type="Node" parent="CanvasLayer/UI/StopwatchLabel"]
-script = ExtResource("4")
+script = ExtResource("7_a7vhx")
 
 [node name="LapLabel" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 0
@@ -497,13 +497,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RaceOverMenu" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("12_8mng8")
+script = ExtResource("12_iwybs")
 
 [node name="RaceOverTitleLabel" type="Label" parent="CanvasLayer/RaceOverMenu"]
 layout_mode = 1
@@ -555,7 +556,7 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
-script = ExtResource("13_pd5wd")
+script = ExtResource("13_5aufr")
 
 [node name="QuitButton" parent="CanvasLayer/RaceOverMenu" instance=ExtResource("9_nqkse")]
 layout_mode = 1
@@ -574,5 +575,6 @@ grow_vertical = 2
 [node name="LapTracker" parent="." instance=ExtResource("9_gqq4n")]
 position = Vector2(147, 64)
 
+[connection signal="race_data_times_updated" from="CanvasLayer/UI/StopwatchLabel/Stopwatch" to="CanvasLayer/RaceOverMenu" method="_on_stopwatch_race_data_times_updated"]
 [connection signal="button_up" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/RaceOverMenu/RestartButton" to="CanvasLayer/RaceOverMenu/RestartButton" method="_on_button_up"]
