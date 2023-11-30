@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ti0y78neg1q2"]
+[gd_scene load_steps=27 format=3 uid="uid://ti0y78neg1q2"]
 
 [ext_resource type="PackedScene" path="res://src/Entities/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdabvnd3jslw2" path="res://Assets/Images/Floor - Dirt 1 64x64.png" id="2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/UI/resume_button.gd" id="10_eajmv"]
 [ext_resource type="Script" path="res://src/UI/race_over_menu.gd" id="12_iwybs"]
 [ext_resource type="Script" path="res://src/UI/restart_button.gd" id="13_5aufr"]
+[ext_resource type="AudioStream" uid="uid://c4pqyjcuya0np" path="res://Assets/Sound/n-Dimensions (Main Theme - Retro Ver.mp3" id="15_2nnyx"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_y4o6a"]
 tile_data = PackedInt32Array(0, 327682, 3, 65536, 458753, 5, 131072, 458753, 5, 196608, 262146, 3)
@@ -402,6 +403,7 @@ pattern_6 = SubResource("TileMapPattern_rlwdp")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("7")
+numOfLaps = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(1.02445, 1)
@@ -574,6 +576,11 @@ grow_vertical = 2
 
 [node name="LapTracker" parent="." instance=ExtResource("9_gqq4n")]
 position = Vector2(147, 64)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_2nnyx")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="race_data_times_updated" from="CanvasLayer/UI/StopwatchLabel/Stopwatch" to="CanvasLayer/RaceOverMenu" method="_on_stopwatch_race_data_times_updated"]
 [connection signal="button_up" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_button_up"]
