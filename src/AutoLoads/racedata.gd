@@ -27,6 +27,12 @@ func add_lap() -> void:
 			raceRunning = false
 			raceOver = true
 
+func remove_lap() -> void:
+	if currLaps == 0:
+		currLaps = 0
+	elif currLaps > 0:
+		currLaps -= 1
+
 func toggle_pause() -> void:
 	gamePaused = !gamePaused
 
