@@ -14,7 +14,7 @@ func save_game() -> void:
 	config.set_value("LevelInfo", "fastestTime", RaceData.fastestTime)
 	
 	# following line will print where data is saved
-	# print(ProjectSettings.globalize_path(configPath))
+	#print(ProjectSettings.globalize_path(configPath))
 	config.save(configPath)
 
 
