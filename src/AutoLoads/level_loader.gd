@@ -8,6 +8,7 @@ var config: ConfigFile = ConfigFile.new()
 
 func start_level() -> void:
 	get_tree().change_scene_to_file(levelPath)
+	LevelLoader.load_game()
 
 
 func save_game() -> void:
