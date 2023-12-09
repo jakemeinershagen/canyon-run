@@ -42,5 +42,5 @@ func wall_hit():
 
 # checks if player has hit the wall
 func _on_Hitbox_body_entered(body: Node) -> void:
-	if body.name == "TileMap":
+	if body is TileMap:
 		wall_hit()

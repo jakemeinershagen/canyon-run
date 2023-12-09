@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://ti0y78neg1q2"]
 
-[ext_resource type="PackedScene" path="res://src/Entities/player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bfpslxlg3v5sg" path="res://src/Entities/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdabvnd3jslw2" path="res://Assets/Images/Floor - Dirt 1 64x64.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://t8v06tnb8ef0" path="res://Assets/Images/Wall - Brick 2 64x64.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://byad7oqlrd7po" path="res://Assets/Images/finishline.png" id="5"]
