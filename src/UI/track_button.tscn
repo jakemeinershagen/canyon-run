@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw68ns5van4gx"]
+
+[ext_resource type="Script" path="res://src/UI/start_button.gd" id="1_ansov"]
+
+[node name="Track1Button" type="Button"]
+text = "Track 1"
+script = ExtResource("1_ansov")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
