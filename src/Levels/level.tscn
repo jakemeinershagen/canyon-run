@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ti0y78neg1q2"]
+[gd_scene load_steps=12 format=3 uid="uid://ti0y78neg1q2"]
 
 [ext_resource type="PackedScene" uid="uid://bfpslxlg3v5sg" path="res://src/Entities/player.tscn" id="1"]
 [ext_resource type="Script" path="res://src/UI/stopwatch_label.gd" id="6_yxojd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/UI/pause_menu.gd" id="9_4vi2q"]
 [ext_resource type="PackedScene" uid="uid://bg36u5m2ohqlk" path="res://src/UI/QuitButton.tscn" id="9_nqkse"]
 [ext_resource type="Script" path="res://src/UI/resume_button.gd" id="10_eajmv"]
+[ext_resource type="Script" path="res://src/UI/menu_button.gd" id="10_ghn5s"]
 [ext_resource type="Script" path="res://src/UI/race_over_menu.gd" id="12_iwybs"]
 [ext_resource type="Script" path="res://src/UI/restart_button.gd" id="13_5aufr"]
 [ext_resource type="AudioStream" uid="uid://c4pqyjcuya0np" path="res://Assets/Sound/n-Dimensions (Main Theme - Retro Ver.mp3" id="15_2nnyx"]
@@ -49,7 +50,6 @@ offset_bottom = 27.0
 script = ExtResource("8_tixbp")
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,9 +78,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -35.0
-offset_top = -36.0
+offset_top = -67.0
 offset_right = 35.0
-offset_bottom = -5.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Resume"
@@ -99,6 +99,22 @@ offset_right = 48.0
 offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -15.5
+offset_right = 26.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+script = ExtResource("10_ghn5s")
 
 [node name="RaceOverMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -154,9 +170,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -32.5
-offset_top = -15.5
+offset_top = -66.0
 offset_right = 32.5
-offset_bottom = 15.5
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
@@ -176,10 +192,28 @@ offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MenuButton" type="Button" parent="CanvasLayer/RaceOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -15.5
+offset_right = 26.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+script = ExtResource("10_ghn5s")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_2nnyx")
 volume_db = -15.0
 
 [connection signal="race_data_times_updated" from="CanvasLayer/UI/StopwatchLabel/Stopwatch" to="CanvasLayer/RaceOverMenu" method="_on_stopwatch_race_data_times_updated"]
 [connection signal="button_up" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/PauseMenu/MenuButton" to="CanvasLayer/PauseMenu/MenuButton" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/RaceOverMenu/RestartButton" to="CanvasLayer/RaceOverMenu/RestartButton" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/RaceOverMenu/MenuButton" to="CanvasLayer/RaceOverMenu/MenuButton" method="_on_button_up"]

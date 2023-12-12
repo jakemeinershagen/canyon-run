@@ -1,21 +1,21 @@
 extends Node
 
 var levelPath: String = "res://src/Levels/level.tscn"
-var trackPath: String = "res://src/Tracks/"
+var trackPath: String = ""
 
-var configPath: String = "user://"
+var configPath: String = ""
 var config: ConfigFile = ConfigFile.new()
 
 
 func start_level(trackName: String) -> void:
 	get_tree().change_scene_to_file(levelPath)
 	
-	trackPath += trackName + ".tscn"
+	trackPath = "res://src/Tracks/" + trackName + ".tscn"
 	var trackScene = load(trackPath)
 	var trackInstance = trackScene.instantiate()
 	get_tree().root.add_child(trackInstance)
 	
-	configPath += trackName + ".cfg"
+	configPath = "user://" + trackName + ".cfg"
 	LevelLoader.load_game()
 
 
@@ -43,5 +43,13 @@ func load_game() -> void:
 		push_warning("Could not load track save file: error code ", err\
 				," path: ", ProjectSettings.globalize_path(configPath))
 		return
-	
+		
 	RaceData.fastestTime = config.get_value("LevelInfo", "fastestTime")
+
+
+func open_main_menu():
+	save_game()
+	if RaceData.gamePaused:
+		RaceData.toggle_pause()
+	get_node("/root/Track").queue_free()
+	get_tree().change_scene_to_file("res://src/UI/MainMenu.tscn")

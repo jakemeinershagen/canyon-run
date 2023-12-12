@@ -6,8 +6,6 @@ var trackNum = 1
 func _ready():
 	var dir = DirAccess.open("res://src/Tracks")
 	
-	print(dir.get_files())
-	
 	for name in dir.get_files():
 		name = name.get_slice(".", 0)
 		var trackButtonInst = trackButton.instantiate()
