@@ -212,6 +212,7 @@ script = ExtResource("10_ghn5s")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_2nnyx")
 volume_db = -15.0
+autoplay = true
 
 [connection signal="race_data_times_updated" from="CanvasLayer/UI/StopwatchLabel/Stopwatch" to="CanvasLayer/RaceOverMenu" method="_on_stopwatch_race_data_times_updated"]
 [connection signal="button_up" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_button_up"]
